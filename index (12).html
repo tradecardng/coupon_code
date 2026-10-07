@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TradeCard · Coupon Drop</title>
+<meta name="description" content="Trade bigger on TradeCard and get up to ₦3,000 extra with limited coupon codes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3785FA; --navy:#0B1F4D; --lime:#CCFF00; --ice:#D7E6FF; --sky:#9EC3FF;
+    --ink:#0B1F4D; --ink2:#3A4D75; --bg:#EEF4FF; --card:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:520px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+  button{font:inherit;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;background:var(--blue);color:#fff;padding:calc(22px + env(safe-area-inset-top)) 16px 28px;border-bottom:4px solid var(--navy);overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.17) 1.6px,transparent 1.8px);background-size:22px 22px}
+  .hero-in{position:relative;max-width:520px;margin:0 auto}
+  .tag{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:var(--navy);border:3px solid var(--navy);border-radius:10px;padding:3px 10px;font-weight:900;font-size:12px;letter-spacing:1.6px;box-shadow:3px 4px 0 var(--navy)}
+  h1{margin-top:16px;font-weight:900;font-size:clamp(30px,9vw,40px);line-height:1;letter-spacing:-1.2px;text-transform:uppercase}
+  h1 .g{display:inline-block;margin-top:8px;background:var(--lime);color:var(--navy);border:3.5px solid var(--navy);border-radius:12px;padding:2px 10px 5px;box-shadow:4px 5px 0 var(--navy)}
+  .lim{margin-top:18px;display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px}
+  .lim svg{width:22px;height:22px;flex:none}.lim b{color:var(--lime)}
+  .plus{position:absolute;width:16px;height:16px}
+
+  /* UPDATE NOTICE */
+  .update{position:relative;margin-top:-2px;margin-top:20px;background:var(--navy);color:#fff;border:3.5px solid var(--navy);border-radius:18px;box-shadow:5px 6px 0 var(--blue);padding:16px}
+  .update .hd{display:flex;align-items:center;gap:10px}
+  .update .ic{flex:none;width:42px;height:42px;border-radius:12px;background:var(--lime);display:flex;align-items:center;justify-content:center;border:3px solid #fff}
+  .update .ic svg{width:24px;height:24px}
+  .update .k{font-size:11px;font-weight:900;letter-spacing:1.6px;color:var(--lime)}
+  .update h2{font-size:19px;font-weight:900;line-height:1.2}
+  .update p{margin-top:10px;font-size:14.5px;font-weight:600;color:#D8E3F8}
+  .update p b{color:#fff}
+  .update .chk{margin-top:10px;font-size:13px;font-weight:600;color:#AFC2E6}
+  .stores{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .store{flex:1;min-width:140px;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:12px;background:var(--lime);color:var(--navy);border:3px solid #fff;font-weight:900;font-size:14.5px;text-decoration:none}
+  .store svg{width:18px;height:18px}
+
+  /* SECTIONS */
+  section{margin-top:30px}
+  .eb{font-size:12px;font-weight:900;letter-spacing:1.8px;color:var(--blue)}
+  h3{font-size:22px;font-weight:900;letter-spacing:-.5px;line-height:1.15;margin-top:4px}
+
+  /* COUPONS */
+  .cps{display:flex;flex-direction:column;gap:16px;margin-top:14px}
+  .tk{display:flex;filter:drop-shadow(5px 6px 0 var(--navy))}
+  .tk .m{flex:1;min-width:0;border:3.5px solid var(--navy);border-right:none;border-radius:18px 0 0 18px;padding:14px 14px 14px 16px;
+    -webkit-mask:radial-gradient(circle 11px at 100% 0,transparent 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 11px at 100% 100%,transparent 98%,#000) bottom/100% 51% no-repeat;
+            mask:radial-gradient(circle 11px at 100% 0,transparent 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 11px at 100% 100%,transparent 98%,#000) bottom/100% 51% no-repeat}
+  .tk .k{font-size:11px;font-weight:900;letter-spacing:1.5px;color:var(--ink2)}
+  .tk .v{font-size:clamp(28px,8.4vw,34px);font-weight:900;letter-spacing:-1.2px;line-height:1.05}
+  .tk .c{font-size:14.5px;font-weight:800;color:var(--ink2);margin-top:3px}
+  .tk .s{flex:none;width:clamp(118px,34vw,138px);background:var(--navy);border:3.5px solid var(--navy);border-left:3px dashed var(--lime);border-radius:0 18px 18px 0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 8px;color:#fff}
+  .tk .s small{font-size:10.5px;font-weight:900;letter-spacing:1.6px;color:var(--sky)}
+  .tk .s .code{font-size:clamp(16px,4.8vw,19px);font-weight:900;color:var(--lime);letter-spacing:.5px}
+  .copy{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:9px;border:2.5px solid #fff;background:transparent;color:#fff;font-size:13px;font-weight:900;min-width:86px;justify-content:center}
+  .copy svg{width:14px;height:14px}
+  .copy.done{background:var(--lime);color:var(--navy);border-color:var(--lime)}
+  .t1 .m{background:#fff}.t2 .m{background:var(--ice)}.t3 .m{background:var(--lime)}.t3 .c,.t3 .k{color:var(--navy)}
+
+  /* STEPS */
+  .steps{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:12px}
+  .st{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:3px solid var(--navy);border-radius:16px;padding:12px 14px;box-shadow:4px 5px 0 var(--navy)}
+  .st .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--lime);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .st b{display:block;font-size:16px;font-weight:900}
+  .st span{display:block;font-size:14px;font-weight:600;color:var(--ink2);margin-top:2px}
+  .st .path{display:inline;font-weight:800;color:var(--navy);background:var(--ice);border-radius:6px;padding:0 6px}
+  .st.hl{background:var(--lime)}.st.hl span{color:var(--navy)}
+
+  /* TERMS */
+  .terms{margin-top:14px;background:var(--card);border:3px solid var(--navy);border-radius:16px;padding:4px 16px}
+  .terms li{list-style:none;display:flex;gap:10px;padding:12px 0;font-size:14.5px;font-weight:600;color:var(--ink2);border-bottom:1.5px dashed #C9D6EE}
+  .terms li:last-child{border-bottom:0}
+  .terms li:before{content:"";flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--blue);transform:rotate(45deg)}
+  .terms b{color:var(--ink)}
+
+  .cta{margin-top:28px;width:100%;height:56px;border-radius:14px;background:var(--lime);color:var(--navy);border:3.5px solid var(--navy);box-shadow:5px 6px 0 var(--navy);
+    display:flex;align-items:center;justify-content:space-between;padding:0 8px 0 20px;font-weight:900;font-size:17px;letter-spacing:.4px;text-transform:uppercase}
+  .cta i{width:38px;height:38px;border-radius:10px;background:var(--navy);color:var(--lime);display:flex;align-items:center;justify-content:center}
+  .cta i svg{width:19px;height:19px}
+  footer{text-align:center;font-size:12.5px;color:var(--ink2);margin-top:24px}
+
+  .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,16px);opacity:0;background:var(--navy);color:#fff;font-weight:800;font-size:14px;
+    padding:10px 18px;border-radius:999px;border:2.5px solid var(--lime);transition:.25s;pointer-events:none;white-space:nowrap}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .hidden{display:none!important}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="plus" style="right:18px;top:26px" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" stroke="#CCFF00" stroke-width="5" stroke-linecap="round"/></svg>
+  <svg class="plus" style="right:52px;bottom:30px;width:12px;height:12px;opacity:.8" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
+  <div class="hero-in">
+    <span class="tag">COUPON DROP</span>
+    <h1>Trade bigger.<br><span class="g">Get up to ₦3,000 extra!</span></h1>
+    <div class="lim">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2.8" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>
+      <span>Limited coupons <b>only!</b><span id="endLine" class="hidden"> Ends <b id="endDate"></b>.</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- UPDATE REQUIRED -->
+  <div class="update" role="note" aria-labelledby="upd">
+    <div class="hd">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0B1F4D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></div>
+      <div><div class="k">BEFORE YOU START</div><h2 id="upd">Update your TradeCard app</h2></div>
+    </div>
+    <p>Coupon codes only work on <b id="verText">the latest version</b> of the TradeCard app. If you're on an older version, you won't see the option to enter a code. <b>Update first, then redeem.</b></p>
+    <p class="chk">Not sure? Open the Play Store or App Store and search “TradeCard”. If you see an <b>Update</b> button, tap it.</p>
+    <div class="stores">
+      <a class="store hidden" id="playBtn" href="#" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#0B1F4D"><path d="M4 2.5v19l10-9.5zM15.2 13.2l2.6 2.5-11 6.2zM17.8 8.3l-2.6 2.5L6.8 2.1zM18.9 9l3 1.7c.8.5.8 1.6 0 2.1l-3 1.7-2.9-2.7z"/></svg>Update on Google Play</a>
+      <a class="store hidden" id="iosBtn" href="#" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#0B1F4D"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.6 1.3-.1 1.7-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.2-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.5-1-2.5-4.1zM13.8 4.9c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.4-.6 3.1-1.5z"/></svg>Update on App Store</a>
+    </div>
+  </div>
+
+  <!-- COUPONS -->
+  <section aria-labelledby="cps">
+    <div class="eb">YOUR COUPONS</div>
+    <h3 id="cps">Pick the code that matches your card</h3>
+    <div class="cps">
+      <div class="tk t1"><div class="m"><div class="k">YOU GET</div><div class="v">+₦1,000</div><div class="c">on a ₦35,000+ card</div></div>
+        <div class="s"><small>CODE</small><span class="code">EXTRA1K</span><button class="copy" data-code="EXTRA1K" aria-label="Copy code EXTRA1K">COPY</button></div></div>
+      <div class="tk t2"><div class="m"><div class="k">YOU GET</div><div class="v">+₦2,000</div><div class="c">on a ₦70,000+ card</div></div>
+        <div class="s"><small>CODE</small><span class="code">EXTRA2K</span><button class="copy" data-code="EXTRA2K" aria-label="Copy code EXTRA2K">COPY</button></div></div>
+      <div class="tk t3"><div class="m"><div class="k">YOU GET</div><div class="v">+₦3,000</div><div class="c">on a ₦100,000+ card</div></div>
+        <div class="s"><small>CODE</small><span class="code">EXTRA3K</span><button class="copy" data-code="EXTRA3K" aria-label="Copy code EXTRA3K">COPY</button></div></div>
+    </div>
+  </section>
+
+  <!-- HOW TO -->
+  <section aria-labelledby="how">
+    <div class="eb">HOW TO REDEEM</div>
+    <h3 id="how">Use your coupon in 4 steps</h3>
+    <ol class="steps">
+      <li class="st hl"><div class="n">1</div><div><b>Update the app</b><span>Make sure you're on the latest version of TradeCard.</span></div></li>
+      <li class="st"><div class="n">2</div><div><b>Copy your code</b><span>Tap <b style="display:inline;font-size:inherit">COPY</b> on the coupon that matches your card value.</span></div></li>
+      <li class="st"><div class="n">3</div><div><b>Redeem the code</b><span>In the app, go to <span class="path" id="redeemPath">Profile → Coupons → Redeem code</span>, paste and confirm.</span></div></li>
+      <li class="st"><div class="n">4</div><div><b>Trade your gift card</b><span>Sell a card worth at least the coupon's minimum value to get your extra naira.</span></div></li>
+    </ol>
+  </section>
+
+  <!-- TERMS -->
+  <section aria-labelledby="gtk">
+    <div class="eb">GOOD TO KNOW</div>
+    <h3 id="gtk">Coupon terms</h3>
+    <ul class="terms">
+      <li><span>Coupon codes need the <b>latest version</b> of the TradeCard app.</span></li>
+      <li><span>Your gift card must meet the <b>minimum value</b> shown for the code you use.</span></li>
+      <li><span>Coupons are <b>limited</b> and available while they last.</span></li>
+      <li><span>Coupons <b>can't be exchanged for cash</b>.</span></li>
+    </ul>
+  </section>
+  <footer>© TradeCard. Terms apply.</footer>
+</main>
+
+<div class="toast" id="toast" role="status">Code copied</div>
+
+<script>
+/* ===== EDIT BEFORE PUBLISHING =====
+   minVersion  : e.g. "3.4.0"  → shows "version 3.4.0 or newer"; leave "" to say "the latest version"
+   endDate     : e.g. "31 October 2026" → shows "Ends 31 October 2026."; leave "" to hide
+   playUrl / appStoreUrl : store links; leave "" to hide that button
+   redeemPath  : the in-app path to the coupon code screen */
+var CONFIG = {
+  minVersion: "",
+  endDate: "",
+  playUrl: "",
+  appStoreUrl: "",
+  redeemPath: "Profile → Coupons → Redeem code"
+};
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  if (CONFIG.minVersion) $('verText').textContent = 'version ' + CONFIG.minVersion + ' or newer';
+  if (CONFIG.endDate) { $('endDate').textContent = CONFIG.endDate; $('endLine').classList.remove('hidden'); }
+  if (CONFIG.redeemPath) $('redeemPath').textContent = CONFIG.redeemPath;
+
+  var ua = navigator.userAgent || '', isIOS = /iPhone|iPad|iPod/i.test(ua), isAndroid = /Android/i.test(ua);
+  if (CONFIG.playUrl && !isIOS) { $('playBtn').href = CONFIG.playUrl; $('playBtn').classList.remove('hidden'); }
+  if (CONFIG.appStoreUrl && !isAndroid) { $('iosBtn').href = CONFIG.appStoreUrl; $('iosBtn').classList.remove('hidden'); }
+
+  var toast = $('toast'), t;
+  function show(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(t); t = setTimeout(function(){ toast.classList.remove('show'); }, 1800); }
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, 99);
+    var ok = false; try { ok = document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta); return ok;
+  }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var code = btn.getAttribute('data-code');
+      function done(){
+        document.querySelectorAll('.copy').forEach(function(b){ b.classList.remove('done'); b.textContent='COPY'; });
+        btn.classList.add('done'); btn.textContent = 'COPIED'; show(code + ' copied');
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(code).then(done, function(){ fallbackCopy(code) ? done() : show('Press and hold the code to copy'); });
+      } else { fallbackCopy(code) ? done() : show('Press and hold the code to copy'); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
